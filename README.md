@@ -1,4 +1,5 @@
-TODO app API for a university course project
+TODO app API for a university course project  
+Just run `node server.js`  
 
 ## The database
 
