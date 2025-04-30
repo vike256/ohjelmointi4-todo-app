@@ -28,14 +28,13 @@ function checkTaskValidity(req, res) {
     const { name, category } = req.body
 
     if (!name) {
-        error_message = 'Task has no name'
+        error_message = { error: 'Task has no name' }
     } else if (category !== 0 && category !== 1) {
-        error_message = 'Category must be 0 or 1'
+        error_message = { error: 'Category must be 0 or 1' }
     } else {
         return true
     }
 
-    error_message = { error : taskValidity}
     console.log(error_message)
     res.status(400).json(error_message)
     return false
