@@ -23,15 +23,22 @@ function updateTasksFile() {
 }
 
 // Return true if valid. Return error message as string if not.
-function checkTaskValidity(name, category) {
-    // Only accept tasks with a name and category
+function checkTaskValidity(req, res) {
+    let error_message = ""
+    const { name, category } = req.body
+
     if (!name) {
-        return 'Task has no name'
+        error_message = 'Task has no name'
     } else if (category !== 0 && category !== 1) {
-        return 'Category must be 0 or 1'
+        error_message = 'Category must be 0 or 1'
     } else {
         return true
     }
+
+    error_message = { error : taskValidity}
+    console.log(error_message)
+    res.status(400).json(error_message)
+    return false
 }
 
 // Only accept the request if the Content-Type is JSON
@@ -56,23 +63,14 @@ app.get('/api/tasks', (req, res) => {
 // Add task
 app.post('/api/tasks', (req, res) => {
     if (!checkContentType(req, res)) return
+    if (!checkTaskValidity(req, res)) return
 
-    // Define variables for checks
-    const { name, category, date } = req.body
-
-    const taskValidity = checkTaskValidity(name, category)
-    if (taskValidity !== true) {
-        const error_message = { error : taskValidity}
-        console.log(error_message)
-        res.status(400).json(error_message)
-        return
-    }
-
+    const { date } = req.body
     const newUUID = crypto.randomUUID()
     let newTask = {
         id: newUUID,
-        name: name,
-        category: category,
+        name: req.body.name,
+        category: req.body.category,
         priority: req.body.priority || 1,
         ...(date && { date })  // Only add date if it exists
     }
@@ -80,16 +78,17 @@ app.post('/api/tasks', (req, res) => {
     tasks.push(newTask)
     updateTasksFile()
 
-    const message = { message: `Task named ${name} added with id ${newUUID}` }
+    const message = { message: `Task named ${newTask.name} added with id ${newUUID}` }
     console.log(message)
     res.status(201).json(message)
 })
 
 // Update task
 app.put('/api/tasks/:id', (req, res) => {
-    const id = req.params.id
-
     if (!checkContentType(req, res)) return
+    if (!checkTaskValidity(req, res)) return
+
+    const id = req.params.id
 
     const index = tasks.findIndex(obj => obj.id === id)
     if (index == -1) {
@@ -99,20 +98,11 @@ app.put('/api/tasks/:id', (req, res) => {
         return
     }
 
-    const { name, category, date } = req.body
-
-    const taskValidity = checkTaskValidity(name, category)
-    if (taskValidity !== true) {
-        const error_message = { error: taskValidity }
-        console.log(error_message)
-        res.status(400).json(error_message)
-        return
-    }
-
+    const { date } = req.body
     tasks[index] = {
         id: id,
-        name: name,
-        category: category,
+        name: req.body.name,
+        category: req.body.category,
         priority: req.body.priority || tasks[index].priority,
         ...(date && { date })
     }
