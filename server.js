@@ -34,6 +34,18 @@ function checkTaskValidity(name, category) {
     }
 }
 
+// Only accept the request if the Content-Type is JSON
+function checkContentType(req, res) {
+    if (!req.is('application/json')) {
+        const error_message = { error: "Content-Type must be application/json" }
+        console.log(error_message)
+        res.status(415).json(error_message)
+        return false
+    } else {
+        return true
+    }
+}
+
 app.use(express.json())
 
 // Get tasks
@@ -43,13 +55,7 @@ app.get('/api/tasks', (req, res) => {
 
 // Add task
 app.post('/api/tasks', (req, res) => {
-    // Only accept the request if the Content-Type is JSON
-    if (!req.is('application/json')) {
-        const error_message = { error: "Content-Type must be application/json" }
-        console.log(error_message)
-        res.status(415).json(error_message)
-        return
-    }
+    if (!checkContentType(req, res)) return
 
     // Define variables for checks
     const { name, category, date } = req.body
@@ -83,13 +89,7 @@ app.post('/api/tasks', (req, res) => {
 app.put('/api/tasks/:id', (req, res) => {
     const id = req.params.id
 
-    // Only accept the request if the Content-Type is JSON
-    if (!req.is('application/json')) {
-        const error_message = { error: "Content-Type must be application/json" }
-        console.log(error_message)
-        res.status(415).json(error_message)
-        return
-    }
+    if (!checkContentType(req, res)) return
 
     const index = tasks.findIndex(obj => obj.id === id)
     if (index == -1) {
