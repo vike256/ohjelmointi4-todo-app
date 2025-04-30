@@ -27,9 +27,9 @@ function checkTaskValidity(req, res) {
     let error_message = ""
     const { name, category } = req.body
 
-    if (!name) {
-        error_message = { error: 'Task has no name' }
-    } else if (category !== 0 && category !== 1) {
+    if (!name || typeof name !== 'string') {
+        error_message = { error: 'Task name invalid or non-existent' }
+    } else if (typeof category !== 'number' || category !== 0 && category !== 1) {
         error_message = { error: 'Category must be 0 or 1' }
     } else {
         return true
