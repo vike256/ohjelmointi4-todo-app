@@ -2,6 +2,9 @@ TODO app created for Programming 4 -course
 
 Test the server with curl:  
 
+Get tasks:
+`curl -X GET http://localhost:3000/api/tasks`
+
 Adding a task:  
 `curl http://localhost:3000/api/tasks -X POST -H "Content-Type: application/json" -d '{"name":"testi","category":0,"priority":1,"date":"2025-05-30"}'`
 
