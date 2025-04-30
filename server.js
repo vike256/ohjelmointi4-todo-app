@@ -11,7 +11,7 @@ const tasks = require('./tasks.json')
 function updateTasksFile() {
     fs.writeFile(
         'tasks.json',
-        JSON.stringify(tasks),
+        JSON.stringify(tasks, null, 4),
         err => {
             if (err) throw err
             
@@ -34,14 +34,14 @@ app.post('/api/tasks', (req, res) => {
         return
     }
 
-    const { name, category } = res.body
+    const { name, category, date } = req.body
 
     if (!name) {
         res.status(400).json({ error: "Task has no name" })
         return
     }
 
-    if (category !== 0 || category !== 1) {
+    if (category !== 0 && category !== 1) {
         res.status(400).json({ error: "Category must be 0 or 1" })
         return
     }
@@ -50,14 +50,14 @@ app.post('/api/tasks', (req, res) => {
         id: crypto.randomUUID(),
         name: name,
         category: category,
-        priority: res.body.priority || 1,
-        date: res.body.date || ""
+        priority: req.body.priority || 1,
+        ...(date && { date })
     }
 
     tasks.push(newTask)
     updateTasksFile()
 
-    res.sendStatus(200).json({ message: "Task added" })
+    res.status(200).json({ message: "Task added" })
 })
 
 // Update task
