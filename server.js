@@ -65,8 +65,8 @@ app.post('/api/tasks', (req, res) => {
 })
 
 // Update task
-app.put('/api/tasks', (req, res) => {
-
+app.put('/api/tasks/:id', (req, res) => {
+    
 })
 
 // Delete task
