@@ -1,4 +1,18 @@
-TODO app created for Programming 4 -course  
+TODO app API for a university course project
+
+## The database
+
+The database is just a JSON-file.  
+The tasks.json file has 3 tasks already in it so you can check what the data looks like.  
+
+A task has 5 potential key-value pairs:
+- id | UUID, created by the server  
+- name | string, required  
+- category | 0 or 1, required, the app has 2 different tabs so you can (read: have to) specify where to put the task  
+- priority | 1-3, defaults to 1 if not specified
+- date  
+
+## Testing
 
 Test the server with curl:  
 
