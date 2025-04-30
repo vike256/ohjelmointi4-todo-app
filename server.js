@@ -111,7 +111,7 @@ app.put('/api/tasks/:id', (req, res) => {
         id: id,
         name: name,
         category: category,
-        priority: req.body.priority || tasks[index.priority],
+        priority: req.body.priority || tasks[index].priority,
         ...(date && { date })
     }
     
