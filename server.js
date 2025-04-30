@@ -70,8 +70,17 @@ app.put('/api/tasks', (req, res) => {
 })
 
 // Delete task
-app.delete('/api/tasks', (req, res) => {
+app.delete('/api/tasks/:id', (req, res) => {
+    const index = tasks.findIndex(obj => obj.id === req.params.id)
+    if (index == -1) {
+        res.status(400).json({ error: "Task not found" })
+        return
+    }
+    
+    tasks.splice(index, 1)
+    updateTasksFile()
 
+    res.status(200).json({ message: "Task deleted" })
 })
 
 app.listen(PORT, () => {
