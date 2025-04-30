@@ -1,13 +1,13 @@
 const express = require('express')
 const path = require('path')
 const fs = require('fs')
-const crypto = require('crypto')
+const crypto = require('crypto')  // Used for creating UUIDs for tasks
 
 const app = express()
 const PORT = 3000
 const tasks = require('./tasks.json')
 
-
+// Write updated tasks to tasks.json
 function updateTasksFile() {
     fs.writeFile(
         'tasks.json',
