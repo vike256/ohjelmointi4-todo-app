@@ -93,7 +93,7 @@ app.put('/api/tasks/:id', (req, res) => {
     if (index == -1) {
         const error_message = { error: "Task not found" }
         console.log(error_message)
-        res.status(400).json(error_message)
+        res.status(404).json(error_message)
         return
     }
 
@@ -131,7 +131,7 @@ app.delete('/api/tasks/:id', (req, res) => {
     if (index == -1) {
         const error_message = { error: `Task with id ${id} not found` }
         console.log(error_message)
-        res.status(400).json(error_message)
+        res.status(404).json(error_message)
         return
     }
     
