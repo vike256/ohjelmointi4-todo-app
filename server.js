@@ -20,6 +20,18 @@ function updateTasksFile() {
     )
 }
 
+// Return true if valid. Return error message as string if not.
+function checkTaskValidity(name, category) {
+    // Only accept tasks with a name and category
+    if (!name) {
+        return 'Task has no name'
+    } else if (category !== 0 && category !== 1) {
+        return 'Category must be 0 or 1'
+    } else {
+        return true
+    }
+}
+
 app.use(express.json())
 
 // Get tasks
@@ -38,15 +50,9 @@ app.post('/api/tasks', (req, res) => {
     // Define variables for checks
     const { name, category, date } = req.body
 
-    // Only accept tasks with a name
-    if (!name) {
-        res.status(400).json({ error: "Task has no name" })
-        return
-    }
-
-    // Only accept tasks with a category
-    if (category !== 0 && category !== 1) {
-        res.status(400).json({ error: "Category must be 0 or 1" })
+    const taskValidity = checkTaskValidity(name, category)
+    if (taskValidity !== true) {
+        res.status(400).json({ error: taskValidity })
         return
     }
 
@@ -66,7 +72,11 @@ app.post('/api/tasks', (req, res) => {
 
 // Update task
 app.put('/api/tasks/:id', (req, res) => {
-    
+    const index = tasks.findIndex(obj => obj.id === req.params.id)
+    if (index == -1) {
+        res.status(400).json({ error: "Task not found" })
+        return
+    }
 })
 
 // Delete task
