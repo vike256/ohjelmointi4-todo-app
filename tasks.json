@@ -1,0 +1,22 @@
+[
+    {
+        "id": "e1570b63-a32e-40ce-93eb-cc414624c85a",
+        "name": "Tee kotitehtävä",
+        "category": 0,
+        "date": "2025-5-9",
+        "priority": 3
+    },
+    {
+        "id": "5a50adbf-642b-4819-9dde-15ea446e01ff",
+        "name": "Katso luento",
+        "category": 0,
+        "date": "2025-5-1",
+        "priority": 2
+    },
+    {
+        "id": "cb8bbe63-e303-4f47-b382-eb180c8b796f",
+        "name": "Korjaa pyörä",
+        "category": 1,
+        "priority": 1
+    }
+]
