@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const fs = require('fs')
-const crypto = require('crypto')  // Used for creating UUIDs for tasks
+const crypto = require('crypto')  // Used to create UUIDs for tasks
 
 const app = express()
 const PORT = 3000
