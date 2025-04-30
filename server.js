@@ -72,11 +72,38 @@ app.post('/api/tasks', (req, res) => {
 
 // Update task
 app.put('/api/tasks/:id', (req, res) => {
-    const index = tasks.findIndex(obj => obj.id === req.params.id)
+    const id = req.params.id
+
+    // Only accept the request if the Content-Type is JSON
+    if (!req.is('application/json')) {
+        res.status(415).json({ error: "Content-Type must be application/json" })
+        return
+    }
+
+    const index = tasks.findIndex(obj => obj.id === id)
     if (index == -1) {
         res.status(400).json({ error: "Task not found" })
         return
     }
+
+    const { name, category, date } = req.body
+
+    const taskValidity = checkTaskValidity(name, category)
+    if (taskValidity !== true) {
+        res.status(400).json({ error: taskValidity })
+        return
+    }
+
+    tasks[index] = {
+        id: id,
+        name: name,
+        category: category,
+        priority: req.body.priority || tasks[index.priority],
+        ...(date && { date })
+    }
+    
+    updateTasksFile()
+    res.status(200).json({ message: "Task updated" })
 })
 
 // Delete task
