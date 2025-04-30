@@ -13,7 +13,9 @@ function updateTasksFile() {
         'tasks.json',
         JSON.stringify(tasks, null, 4),
         err => {
-            if (err) throw err
+            if (err) {
+                console.log(err)
+            }
             
             console.log('tasks.json file updated')
         }
