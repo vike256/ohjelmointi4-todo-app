@@ -29,18 +29,22 @@ app.get('/api/tasks', (req, res) => {
 
 // Add task
 app.post('/api/tasks', (req, res) => {
+    // Only accept the request if the Content-Type is JSON
     if (!req.is('application/json')) {
         res.status(415).json({ error: "Content-Type must be application/json" })
         return
     }
 
+    // Define variables for checks
     const { name, category, date } = req.body
 
+    // Only accept tasks with a name
     if (!name) {
         res.status(400).json({ error: "Task has no name" })
         return
     }
 
+    // Only accept tasks with a category
     if (category !== 0 && category !== 1) {
         res.status(400).json({ error: "Category must be 0 or 1" })
         return
@@ -51,7 +55,7 @@ app.post('/api/tasks', (req, res) => {
         name: name,
         category: category,
         priority: req.body.priority || 1,
-        ...(date && { date })
+        ...(date && { date })  // Only add date if it exists
     }
 
     tasks.push(newTask)
