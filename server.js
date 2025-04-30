@@ -57,7 +57,7 @@ app.post('/api/tasks', (req, res) => {
     tasks.push(newTask)
     updateTasksFile()
 
-    res.status(200).json({ message: "Task added" })
+    res.status(201).json({ message: "Task added" })
 })
 
 // Update task
