@@ -2,7 +2,7 @@ TODO app created for Programming 4 -course
 
 Test the server with curl:  
 
-Get tasks:
+Get tasks:  
 `curl -X GET http://localhost:3000/api/tasks`
 
 Adding a task:  
