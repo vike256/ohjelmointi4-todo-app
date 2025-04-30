@@ -43,7 +43,9 @@ app.get('/api/tasks', (req, res) => {
 app.post('/api/tasks', (req, res) => {
     // Only accept the request if the Content-Type is JSON
     if (!req.is('application/json')) {
-        res.status(415).json({ error: "Content-Type must be application/json" })
+        const error_message = { error: "Content-Type must be application/json" }
+        console.log(error_message)
+        res.status(415).json(error_message)
         return
     }
 
@@ -52,12 +54,15 @@ app.post('/api/tasks', (req, res) => {
 
     const taskValidity = checkTaskValidity(name, category)
     if (taskValidity !== true) {
-        res.status(400).json({ error: taskValidity })
+        const error_message = { error : taskValidity}
+        console.log(error_message)
+        res.status(400).json(error_message)
         return
     }
 
+    const newUUID = crypto.randomUUID()
     let newTask = {
-        id: crypto.randomUUID(),
+        id: newUUID,
         name: name,
         category: category,
         priority: req.body.priority || 1,
@@ -67,7 +72,9 @@ app.post('/api/tasks', (req, res) => {
     tasks.push(newTask)
     updateTasksFile()
 
-    res.status(201).json({ message: "Task added" })
+    const message = { message: `Task named ${name} added with id ${newUUID}` }
+    console.log(message)
+    res.status(201).json(message)
 })
 
 // Update task
@@ -76,13 +83,17 @@ app.put('/api/tasks/:id', (req, res) => {
 
     // Only accept the request if the Content-Type is JSON
     if (!req.is('application/json')) {
-        res.status(415).json({ error: "Content-Type must be application/json" })
+        const error_message = { error: "Content-Type must be application/json" }
+        console.log(error_message)
+        res.status(415).json(error_message)
         return
     }
 
     const index = tasks.findIndex(obj => obj.id === id)
     if (index == -1) {
-        res.status(400).json({ error: "Task not found" })
+        const error_message = { error: "Task not found" }
+        console.log(error_message)
+        res.status(400).json(error_message)
         return
     }
 
@@ -90,7 +101,9 @@ app.put('/api/tasks/:id', (req, res) => {
 
     const taskValidity = checkTaskValidity(name, category)
     if (taskValidity !== true) {
-        res.status(400).json({ error: taskValidity })
+        const error_message = { error: taskValidity }
+        console.log(error_message)
+        res.status(400).json(error_message)
         return
     }
 
@@ -103,21 +116,31 @@ app.put('/api/tasks/:id', (req, res) => {
     }
     
     updateTasksFile()
-    res.status(200).json({ message: "Task updated" })
+
+    const message = { message: `Task with id ${id} updated` }
+    console.log(message)
+    res.status(200).json(message)
 })
 
 // Delete task
 app.delete('/api/tasks/:id', (req, res) => {
-    const index = tasks.findIndex(obj => obj.id === req.params.id)
+    const id = req.params.id
+
+    const index = tasks.findIndex(obj => obj.id === id)
+
     if (index == -1) {
-        res.status(400).json({ error: "Task not found" })
+        const error_message = { error: `Task with id ${id} not found` }
+        console.log(error_message)
+        res.status(400).json(error_message)
         return
     }
     
     tasks.splice(index, 1)
     updateTasksFile()
 
-    res.status(200).json({ message: "Task deleted" })
+    const message = { message: `Task with id ${id} deleted` }
+    console.log(message)
+    res.status(200).json(message)
 })
 
 app.listen(PORT, () => {
