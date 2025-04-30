@@ -134,6 +134,6 @@ app.delete('/api/tasks/:id', (req, res) => {
     res.status(200).json(message)
 })
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`http://localhost:${PORT} \nhttp://localhost:${PORT}/api/tasks`)
 })
