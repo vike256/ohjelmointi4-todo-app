@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <title>TODO</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">TODO</div>
+
+        <div class="navigation" id="navigation">
+            <div class="tabs">
+                <button id="tab0" class="activeTab">Opinnot</button>
+                <button id="tab1">Arki</button>
+            </div>
+            <button id="sortButton">⇅</button>
+        </div>
+
+        <div class="taskList" id="taskList">
+        </div>
+
+        <div class="plusButtonDiv">
+            <button id="plusButton">+</button>
+        </div>
+
+        <div class="taskFormDiv">
+            <form class="taskForm hidden" id="taskForm">
+                <div class="taskFormName">
+                    <label for="name">Tehtävä*:</label>
+                    <input type="text" name="name" id="name" placeholder="Tehtävän nimi..." required>
+                </div>
+                
+                <div class="taskFormDate">
+                    <label for="date">Määräaika:</label>
+                    <input type="date" name="date" id="date">
+                </div>
+        
+                <div class="taskFormPriority">
+                    <label for="priority">Prioriteetti:</label>
+                    <input type="number" name="priority" id="priority" min="1" max="3" value="1" required>
+                </div>
+                
+                <div class="taskFormButtons">
+                    <button id="deleteBtn" class="hidden" type="button">Poista</button>        
+                    <button id="cancelBtn" type="button">Peruuta</button>
+                    <button id="sendEditedBtn" type="button" class="hidden">Valmis</button>
+                    <button id="sendNewBtn" type="button">Valmis</button>
+                </div>
+            </form>
+        </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

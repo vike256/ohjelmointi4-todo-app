@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+}
+
+button {
+    padding: .3rem;
+    border: 1px solid black;
+    margin: 0.1rem;
+}
+
+button:hover {
+    background-color: rgb(224, 224, 224);
+}
+
+input {
+    padding: 0px .3rem;
+}
+
+.container {
+    width: 500px;
+    margin: 0px auto;
+    background-color: white;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: .5rem;
+    text-align: center;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+}
+
+.navigation > div {
+    flex-grow: 1;
+}
+
+.navigation button {
+    padding: .5rem;
+}
+
+.tabs {
+    display: flex;
+}
+
+.tabs > button {
+    flex-grow: 1;
+}
+
+.activeTab {
+    border-bottom: 4px solid black;
+}
+
+#sortButton {
+    width: 10%;
+}
+
+.task {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 1rem;
+    margin: .5rem;
+}
+
+.taskName {
+    flex: 1;
+}
+
+.markAsDoneButton {
+    width: 2rem;
+    height: 2rem;
+    margin-right: .5rem;
+    border-radius: 50%;
+    scale: 0.7;
+}
+
+.taskForm {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 60%;
+    padding: 0.5rem;
+    margin: 1rem auto;
+}
+
+.taskForm > div {
+    margin: .3rem;
+}
+
+.taskFormButtons {
+    display: flex;
+}
+
+.taskFormButtons > button {
+    flex-grow: 1;
+}
+
+.plusButtonDiv {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#plusButton {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    border: 1px solid black;
+    margin: 1rem
+}
+
+.hidden {
+    display: none;
+}
