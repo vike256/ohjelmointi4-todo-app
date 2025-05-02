@@ -1,4 +1,5 @@
 TODO app API for a university course project  
+The front-end is not final. It's just the parts I contributed to the course project.  
 
 ## Usage
 Run the server with `node server.js`  
