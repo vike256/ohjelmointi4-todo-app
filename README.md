@@ -1,5 +1,12 @@
 TODO app API for a university course project  
-Just run `node server.js`  
+
+## Usage
+Run the server with `node server.js`  
+
+If you want to use the front-end for testing:
+- Rename config.js.example in front-end/ to config.js
+- Update apiUrl in config.js
+- Open front-end/index.html in your browser
 
 ## The database
 
