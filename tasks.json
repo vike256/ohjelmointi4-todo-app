@@ -1,22 +1,49 @@
 [
     {
-        "id": "e1570b63-a32e-40ce-93eb-cc414624c85a",
-        "name": "Tee kotitehtävä",
-        "category": 0,
-        "date": "2025-5-9",
-        "priority": 3
+      "id": "e1570b63-a32e-40ce-93eb-cc414624c85a",
+      "name": "Tee kotitehtävä",
+      "category": 0,
+      "date": "2025-5-9",
+      "priority": 3
     },
     {
-        "id": "5a50adbf-642b-4819-9dde-15ea446e01ff",
-        "name": "Katso luento",
-        "category": 0,
-        "date": "2025-5-1",
-        "priority": 2
+      "id": "5a50adbf-642b-4819-9dde-15ea446e01ff",
+      "name": "Katso luento",
+      "category": 0,
+      "date": "2025-5-1",
+      "priority": 2
     },
     {
-        "id": "cb8bbe63-e303-4f47-b382-eb180c8b796f",
-        "name": "Korjaa pyörä",
-        "category": 1,
-        "priority": 1
+      "id": "cb8bbe63-e303-4f47-b382-eb180c8b796f",
+      "name": "Korjaa pyörä",
+      "category": 1,
+      "priority": 1
+    },
+    {
+      "id": "9fdc36b0-4edc-47d3-8051-2269b127011a",
+      "name": "Siivoa vessa",
+      "category": 1,
+      "priority": "3",
+      "date": "2025-05-16"
+    },
+    {
+      "id": "7339da08-4707-4cb2-972c-35388922c489",
+      "name": "Tee eväät",
+      "category": 1,
+      "priority": "2",
+      "date": "2025-05-14"
+    },
+    {
+      "id": "dd0ea2c9-3a0c-4813-961c-10bbd652d27c",
+      "name": "Kirjoita essee",
+      "category": 0,
+      "priority": "3",
+      "date": "2025-05-30"
+    },
+    {
+      "id": "51007a7b-9e1f-429e-8e7d-0f9f82c85183",
+      "name": "Nouse sängystä",
+      "category": 1,
+      "priority": "1"
     }
-]
+  ]
