@@ -118,6 +118,10 @@ input {
     margin: 1rem
 }
 
+.green {
+    background-color: #16C47F;
+}
+
 .hidden {
     display: none;
 }

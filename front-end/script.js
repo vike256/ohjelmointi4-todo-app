@@ -12,6 +12,7 @@ const cancelButton = document.getElementById("cancelBtn")
 const tab0Button = document.getElementById("tab0")
 const tab1Button = document.getElementById("tab1")
 const date = document.getElementById("date")
+const taskNameInput = document.getElementById("name")
 
 const today = new Date().toISOString().split("T")[0]
 
@@ -104,6 +105,16 @@ function show(element) {
     element.classList.remove("hidden")
 }
 
+function updateSendButtonActivity() {
+    if (taskNameInput.value.trim() !== "") {
+        sendNewButton.classList.add("green")
+        sendEditedButton.classList.add("green")
+    } else {
+        sendNewButton.classList.remove("green")
+        sendEditedButton.classList.remove("green")
+    }
+}
+
 function displayTaskList(tasks) {
     // Show
     show(taskList)
@@ -152,6 +163,8 @@ function displayTaskList(tasks) {
                 displayEditTask(task)
             })
         })
+        
+    updateSendButtonActivity()
 }
 
 function displayEditTask(task) {
@@ -166,9 +179,11 @@ function displayEditTask(task) {
     hide(plusButton)
 
     // Display task values
-    document.getElementById("name").value = task.name
+    taskNameInput.value = task.name
     document.getElementById("priority").value = task.priority
     document.getElementById("date").value = task.date
+    
+    updateSendButtonActivity()
 }
 
 function displayAddTask() {
@@ -183,6 +198,8 @@ function displayAddTask() {
     hide(deleteButton)
     hide(taskList)
     hide(plusButton)
+
+    sendNewButton.classList.remove("green")
 }
 
 // Main
@@ -193,6 +210,11 @@ date.setAttribute("min", today)
 
 sendNewButton.addEventListener("click", event => {
     event.preventDefault()
+
+    if (!taskNameInput.classList.contains("green")) {
+        alert('Enter task name')
+        return
+    }
 
     const formData = new FormData(taskForm)
     const data = Object.fromEntries(formData)
@@ -208,6 +230,11 @@ sendNewButton.addEventListener("click", event => {
 
 sendEditedButton.addEventListener("click", event => {
     event.preventDefault()
+
+    if (!taskNameInput.classList.contains("green")) {
+        alert('Enter task name')
+        return
+    }
 
     const formData = new FormData(taskForm)
     const data = Object.fromEntries(formData)
@@ -256,4 +283,8 @@ sortButton.addEventListener("click", event => {
     console.log("Sorting based on", sorting)
     sortButton.innerText = "⇅\n" + sorting
     loadTasks()
+})
+
+taskNameInput.addEventListener("input", event => {
+    updateSendButtonActivity()
 })
