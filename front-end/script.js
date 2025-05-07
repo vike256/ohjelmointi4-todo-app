@@ -129,6 +129,12 @@ function displayTaskList(tasks) {
         return task.category === currentTab 
     }).sort(function(a, b) {
         if (sorting === "date") {
+            if (typeof a.date == 'undefined') {
+                return 1
+            } else if (typeof b.date == 'undefined') {
+                return -1
+            }
+
             return new Date(a.date) - new Date(b.date)
         } else {
             return b.priority - a.priority
@@ -226,7 +232,7 @@ date.setAttribute("min", today)
 sendNewButton.addEventListener("click", event => {
     event.preventDefault()
 
-    if (!taskNameInput.classList.contains("green")) {
+    if (taskNameInput.value.trim() === "") {
         alert('Enter task name')
         return
     }
@@ -246,7 +252,7 @@ sendNewButton.addEventListener("click", event => {
 sendEditedButton.addEventListener("click", event => {
     event.preventDefault()
 
-    if (!taskNameInput.classList.contains("green")) {
+    if (taskNameInput.value.trim() === "") {
         alert('Enter task name')
         return
     }
