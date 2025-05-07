@@ -19,8 +19,8 @@ const today = new Date().toISOString().split("T")[0]
 let currentTab = 0
 let currentTaskId = null
 let sorting = "date"
-let tab1_name = "Opinnot"
-let tab2_name = "Arki"
+let tab0_name = "Opinnot"
+let tab1_name = "Arki"
 
 async function loadTasks() {
     try {
