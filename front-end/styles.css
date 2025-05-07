@@ -8,8 +8,10 @@
 
 button {
     padding: .3rem;
-    border: 1px solid black;
-    margin: 0.1rem;
+    border: 2px solid black;
+    margin: 0.2rem;
+    background-color: white;
+    border-radius: 0.4rem;
 }
 
 button:hover {
@@ -17,11 +19,11 @@ button:hover {
 }
 
 input {
-    padding: 0px .3rem;
+    padding: 0 .3rem;
 }
 
 .container {
-    width: 500px;
+    max-width: 500px;
     margin: 0px auto;
     background-color: white;
 }
@@ -53,21 +55,24 @@ input {
 
 .tabs > button {
     flex-grow: 1;
+    width: 7rem;
 }
 
 .activeTab {
-    border-bottom: 4px solid black;
+    border-bottom: 6px solid black;
+    font-weight: bold;
 }
 
 #sortButton {
     width: 20%;
+    font-weight: bold;
 }
 
 .task {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 1rem;
     margin: .5rem;
 }
@@ -124,7 +129,6 @@ input {
     width: 4rem;
     height: 4rem;
     font-size: 2rem;
-    border: 1px solid black;
     margin: 1rem;
 }
 
