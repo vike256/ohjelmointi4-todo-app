@@ -131,15 +131,30 @@ function displayTaskList(tasks) {
         if (sorting === "date") {
             return new Date(a.date) - new Date(b.date)
         } else {
-            return a.priority - b.priority
+            return b.priority - a.priority
         }
     }).forEach(task => {
-        const { id, name } = task
+        const { id, name, date, priority } = task
+        let displayDate = date
+        let priorityClass = "priority1"
+
+        if (priority === 2) {
+            priorityClass = "priority2"
+        } else if (priority == 3) {
+            priorityClass = "priority3"
+        }
+
+        if (!date) {
+            displayDate = ""
+        }
 
         taskList.innerHTML += `
             <div class="task" id="${id}">
-                <button id="${id}-markAsDoneButton" class="markAsDoneButton">✓</button>
-                <p id="${id}-taskName" class="taskName">${name}</p>
+                <button id="${id}-markAsDoneButton" class="markAsDoneButton ${priorityClass}">✓</button>
+                <div id="${id}-taskDetails" class="taskDetails">
+                    <p id="${id}-taskName" class="taskName">${name}</p>
+                    <p id="${id}-taskDate" class="taskDate">${displayDate}</p>
+                </div>
             </div>
         `
     })
@@ -147,7 +162,7 @@ function displayTaskList(tasks) {
     // Add event listeners
     tasks.filter(function(task) { return task.category === currentTab })
         .forEach(task => {
-            const { id, name } = task
+            const { id } = task
 
             const markAsDoneButton = document.getElementById("".concat(id, "-markAsDoneButton"))
             markAsDoneButton.addEventListener("click", event => {
@@ -155,7 +170,7 @@ function displayTaskList(tasks) {
                 deleteTask(id)
             })
 
-            const taskName = document.getElementById("".concat(id, "-taskName"))
+            const taskName = document.getElementById("".concat(id, "-taskDetails"))
             taskName.addEventListener("click", event => {
                 event.preventDefault()
 

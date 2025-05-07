@@ -72,8 +72,17 @@ input {
     margin: .5rem;
 }
 
-.taskName {
+.taskDetails {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 3rem;
+}
+
+.taskDate {
+    font-size: 0.7rem;
+    color: #555;
 }
 
 .markAsDoneButton {
@@ -120,6 +129,18 @@ input {
 
 .green {
     background-color: #16C47F;
+}
+
+.priority1 {
+    background-color: #16C47F;
+}
+
+.priority2 {
+    background-color: #FFD65A;
+}
+
+.priority3 {
+    background-color: #F93827;
 }
 
 .hidden {
