@@ -36,7 +36,7 @@ input {
 .navigation {
     display: flex;
     justify-content: space-between;
-    height: 3rem;
+    height: 4rem;
 }
 
 .navigation > div {
@@ -60,7 +60,7 @@ input {
 }
 
 #sortButton {
-    width: 10%;
+    width: 20%;
 }
 
 .task {
