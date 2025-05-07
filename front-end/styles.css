@@ -90,7 +90,7 @@ input {
     height: 2rem;
     margin-right: .5rem;
     border-radius: 50%;
-    scale: 0.7;
+    margin-left: 0.5rem
 }
 
 .taskForm {
@@ -121,10 +121,11 @@ input {
 
 #plusButton {
     border-radius: 50%;
-    width: 32px;
-    height: 32px;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
     border: 1px solid black;
-    margin: 1rem
+    margin: 1rem;
 }
 
 .green {
@@ -132,15 +133,15 @@ input {
 }
 
 .priority1 {
-    background-color: #16C47F;
+    background-color: #65c9a1;
 }
 
 .priority2 {
-    background-color: #FFD65A;
+    background-color: #ffdf7e;
 }
 
 .priority3 {
-    background-color: #F93827;
+    background-color: #ff897e;
 }
 
 .hidden {
