@@ -1,9 +1,10 @@
 const express = require('express')
 const fs = require('fs')
 const crypto = require('crypto')  // Used to create UUIDs for tasks
+const path = require('path')
 
 const app = express()
-const PORT = 3000
+const PORT = 3256
 const tasks = require('./tasks.json')
 
 // Write updated tasks to tasks.json
@@ -52,6 +53,23 @@ function checkContentType(req, res) {
 }
 
 app.use(express.json())
+
+// Frontend
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'front-end', 'index.html'))
+})
+
+app.get('/styles.css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'front-end', 'styles.css'))
+})
+
+app.get('/config.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'front-end', 'config.js'))
+})
+
+app.get('/script.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'front-end', 'script.js'))
+})
 
 // Get tasks
 app.get('/api/tasks', (req, res) => {
@@ -133,6 +151,6 @@ app.delete('/api/tasks/:id', (req, res) => {
     res.status(200).json(message)
 })
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`http://localhost:${PORT} \nhttp://localhost:${PORT}/api/tasks`)
 })
