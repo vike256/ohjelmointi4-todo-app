@@ -299,10 +299,10 @@ sortButton.addEventListener("click", event => {
     let sortingText = null
     if (sorting === "date") {
         sorting = "priority"
-        sortingText = "Prioriteetti"
+        sortingText = "Tärkeys"
     } else {
         sorting = "date"
-        sortingText = "Määräaika"
+        sortingText = "Aika"
     }
     console.log("Sorting based on", sortingText)
     sortButton.innerText = "⇅\n" + sortingText
