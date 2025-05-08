@@ -296,13 +296,16 @@ tab1Button.addEventListener("click", event => {
 })
 
 sortButton.addEventListener("click", event => {
+    let sortingText = null
     if (sorting === "date") {
         sorting = "priority"
+        sortingText = "Prioriteetti"
     } else {
         sorting = "date"
+        sortingText = "Määräaika"
     }
-    console.log("Sorting based on", sorting)
-    sortButton.innerText = "⇅\n" + sorting
+    console.log("Sorting based on", sortingText)
+    sortButton.innerText = "⇅\n" + sortingText
     loadTasks()
 })
 
