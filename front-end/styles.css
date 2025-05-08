@@ -103,6 +103,7 @@ input {
     flex-direction: column;
     border: 2px solid black;
     width: 95%;
+    border-radius: 0.4rem;
     padding: 0.5rem;
     margin: 1rem auto;
 }
