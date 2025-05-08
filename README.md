@@ -4,11 +4,6 @@ The front-end is not final. It's just the parts I contributed to the course proj
 ## Usage
 Run the server with `node server.js`  
 
-If you want to use the front-end for testing:
-- Rename config.js.example in front-end/ to config.js
-- Update apiUrl in config.js
-- Open front-end/index.html in your browser
-
 ## The database
 
 The database is just a JSON-file.  
