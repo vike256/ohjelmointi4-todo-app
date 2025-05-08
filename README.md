@@ -7,7 +7,7 @@ Run the server with `node server.js`
 ## The database
 
 The database is just a JSON-file.  
-The tasks.json file has 3 tasks already in it so you can check what the data looks like.  
+The tasks.json file has some tasks already in it so you can check what the data looks like.  
 
 A task has 5 potential key-value pairs:
 - id | UUID, created by the server  
