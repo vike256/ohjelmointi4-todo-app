@@ -1,4 +1,6 @@
 TODO app API for a university course project   
+ 
+<img src="https://i.imgur.com/1D7G2q7.png" alt="A screenshot of the app" width="300" height=auto>  
 
 ## Usage
 Run the server with `node server.js`  
